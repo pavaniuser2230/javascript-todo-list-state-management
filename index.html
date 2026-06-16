@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>To-Do List — Advanced CSS3 & Responsive Architecture</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <h1 class="app__title">To-Do</h1>
+
+    <form id="new-task-form" class="new-task-form" autocomplete="off">
+      <input id="new-task-input" class="new-task-input" type="text" placeholder="Add a new task" required />
+      <button class="btn" type="submit">Add</button>
+    </form>
+
+    <section class="controls">
+      <div class="filters" role="tablist" aria-label="Filter tasks">
+        <button data-filter="all" class="filter-btn active">All</button>
+        <button data-filter="active" class="filter-btn">Active</button>
+        <button data-filter="completed" class="filter-btn">Completed</button>
+      </div>
+      <button id="clear-completed" class="btn small">Clear completed</button>
+    </section>
+
+    <ul id="task-list" class="task-list" aria-live="polite"></ul>
+
+    <footer class="app__footer">
+      <span id="items-left">0</span> items left
+    </footer>
+  </main>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

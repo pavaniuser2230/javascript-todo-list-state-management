@@ -1,0 +1,198 @@
+:root{
+  --bg:#0f172a;
+  --surface:#111827;
+  --surface-strong:#1e293b;
+  --surface-soft:#243449;
+  --text:#f8fafc;
+  --muted:#94a3b8;
+  --accent:#7c3aed;
+  --accent-soft:rgba(124,58,237,0.12);
+  --success:#22c55e;
+  --danger:#f97316;
+  --border:rgba(148,163,184,0.18);
+  font-size:16px;
+}
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: radial-gradient(circle at top, rgba(124,58,237,0.18), transparent 28%),
+              linear-gradient(180deg,#0b1124 0%,#111827 55%,#111827 100%);
+  color:var(--text);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:2rem;
+}
+.app{
+  width:100%;
+  max-width:600px;
+  border:1px solid var(--border);
+  border-radius:32px;
+  background:rgba(15,23,42,0.94);
+  box-shadow:0 30px 80px rgba(15,23,42,0.35);
+  padding:2rem;
+  backdrop-filter:blur(12px);
+}
+.app__title{
+  font-size:2.4rem;
+  margin:0 0 1rem;
+  letter-spacing:0.04em;
+}
+.new-task-form{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:.75rem;
+  margin-bottom:1.25rem;
+}
+.new-task-input{
+  width:100%;
+  padding:1rem 1.1rem;
+  border:1px solid rgba(148,163,184,0.24);
+  border-radius:18px;
+  background:rgba(255,255,255,0.05);
+  color:var(--text);
+  outline:none;
+  transition:all .2s ease;
+}
+.new-task-input:focus{
+  border-color:rgba(124,58,237,0.65);
+  box-shadow:0 0 0 4px rgba(124,58,237,0.12);
+}
+.btn{
+  background:linear-gradient(135deg, #8b5cf6, #7c3aed);
+  color:#fff;
+  padding:.92rem 1.15rem;
+  border:none;
+  border-radius:18px;
+  cursor:pointer;
+  font-weight:600;
+  transition:transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+}
+.btn:hover{
+  transform:translateY(-1px);
+  box-shadow:0 16px 35px rgba(124,58,237,0.24);
+}
+.btn.small{
+  background:rgba(148,163,184,0.08);
+  color:var(--muted);
+  padding:.7rem 1rem;
+  border-radius:14px;
+}
+.controls{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  flex-wrap:wrap;
+  margin-bottom:1rem;
+}
+.filters{
+  display:flex;
+  gap:.5rem;
+  flex-wrap:wrap;
+}
+.filter-btn{
+  border:1px solid transparent;
+  background:rgba(148,163,184,0.08);
+  color:var(--muted);
+  padding:.65rem 1rem;
+  border-radius:999px;
+  cursor:pointer;
+  transition:all .2s ease;
+}
+.filter-btn:hover,
+.filter-btn.active{
+  color:var(--text);
+  background:var(--accent-soft);
+  border-color:rgba(124,58,237,0.32);
+}
+.task-list{
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  gap:.85rem;
+}
+.task{
+  background:rgba(15,23,42,0.8);
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  padding:1rem 1rem;
+  border-radius:20px;
+  border:1px solid rgba(148,163,184,0.12);
+  transition:transform .2s ease, border-color .2s ease;
+}
+.task:hover{
+  transform:translateY(-1px);
+  border-color:rgba(124,58,237,0.2);
+}
+.task__checkbox{
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  border:2px solid rgba(148,163,184,0.5);
+  display:inline-grid;
+  place-items:center;
+  cursor:pointer;
+  background:rgba(255,255,255,0.04);
+  color:var(--success);
+  transition:all .2s ease;
+}
+.task__checkbox[aria-pressed="true"]{
+  border-color:var(--success);
+  background:var(--success);
+  color:#fff;
+}
+.task__label{
+  flex:1;
+  color:var(--text);
+  font-size:1rem;
+  line-height:1.55;
+  outline:none;
+}
+.task__label.completed{
+  color:var(--muted);
+  text-decoration:line-through;
+}
+.task__actions{
+  display:flex;
+  gap:.55rem;
+  flex-shrink:0;
+}
+.task__edit,
+.task__delete{
+  background:transparent;
+  border:none;
+  color:var(--muted);
+  cursor:pointer;
+  font-weight:600;
+  transition:color .2s ease;
+}
+.task__edit:hover{color:#a78bfa}
+.task__delete:hover{color:var(--danger)}
+.task__edit-input{
+  width:100%;
+  padding:.85rem 1rem;
+  border:1px solid rgba(148,163,184,0.22);
+  border-radius:16px;
+  background:rgba(255,255,255,0.05);
+  color:var(--text);
+}
+.app__footer{
+  margin-top:1rem;
+  color:var(--muted);
+  font-size:.95rem;
+}
+
+@media (max-width:520px){
+  .app{padding:1.5rem}
+  .new-task-form{grid-template-columns:1fr}
+  .controls{justify-content:center}
+  .controls > button{width:100%}
+  .task{flex-direction:column;align-items:flex-start}
+  .task__actions{width:100%;justify-content:flex-end}
+}
